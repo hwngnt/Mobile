@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditorFragment">
+
+
+    <ImageView
+        android:layout_width="414dp"
+        android:layout_height="287dp"
+        android:src="@drawable/rectangle" />
+
+    <ImageView
+        android:layout_width="196dp"
+        android:layout_height="181dp"
+        android:src="@drawable/group_6" />
+
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:background="@drawable/back_arrow"
+        android:translationX="24dp"
+        android:translationY="50dp" />
+
+
+    <TextView
+        android:id="@+id/addExpenseTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="Add Expense"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+
+    <ImageView
+        android:layout_width="358dp"
+        android:layout_height="604dp"
+        android:src="@drawable/rectangle_1"
+        android:translationX="28dp"
+        android:translationY="113dp" />
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="275dp"
+        android:layout_height="80dp"
+        android:translationX="70dp"
+        android:translationY="190dp"
+        >
+        <AutoCompleteTextView
+            android:textColor="@color/black"
+            android:id="@+id/typeExpense"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:inputType="none"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/expenseName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Type"
+        android:textColor="@color/black"
+        android:textSize="13dp"
+        android:textStyle="bold"
+        android:translationX="70dp"
+        android:translationY="165dp" />
+
+    <EditText
+        android:id="@+id/addAmount"
+        android:layout_width="275dp"
+        android:layout_height="80dp"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:translationX="70dp"
+        android:translationY="310dp" />
+
+
+    <TextView
+        android:id="@+id/tripDestination"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="13dp"
+        android:textStyle="bold"
+        android:translationX="70dp"
+        android:translationY="290dp"
+        />
+
+    <TextView
+        android:id="@+id/expenseTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="13dp"
+        android:textStyle="bold"
+        android:translationX="70dp"
+        android:translationY="400dp" />
+
+    <TextView
+        android:id="@+id/expenseAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comments"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="13dp"
+        android:textStyle="bold"
+        android:translationX="70dp"
+        android:translationY="500dp" />
+
+    <EditText
+        android:id="@+id/time"
+        android:layout_width="275dp"
+        android:layout_height="50dp"
+        android:textColor="@color/black"
+        android:translationX="70dp"
+        android:translationY="430dp" />
+
+
+    <EditText
+        android:id="@+id/comments"
+        android:layout_width="275dp"
+        android:layout_height="50dp"
+        android:translationX="70dp"
+        android:translationY="530dp"
+        android:textColor="@color/black"/>
+
+    <ImageView
+        android:id="@+id/add_icon"
+        android:layout_width="19.2dp"
+        android:layout_height="19.2dp"
+        android:translationX="150dp"
+        android:translationY="675dp"
+        android:background="@drawable/add" />
+
+    <TextView
+        android:id="@+id/addTripText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Add Expense"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="13dp"
+        android:translationY="675dp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/addExpense"
+        android:layout_width="275dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rectangle_2"
+        android:translationX="70dp"
+        android:translationY="660dp" />
+
+
+</RelativeLayout>
