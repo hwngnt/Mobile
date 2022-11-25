@@ -1,9 +1,14 @@
 package com.example.mobile;
 
 import android.app.AlertDialog;
-import android.app.Fragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -11,22 +16,11 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.SearchView;
-
 import com.example.mobile.adapter.TripListAdapter;
 import com.example.mobile.databinding.FragmentMainBinding;
 import com.example.mobile.model.TripEntity;
 import com.example.mobile.sqlite.TripDatabaseAssessObject;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 public class MainFragment extends Fragment implements TripListAdapter.ListTripListener {
@@ -39,19 +33,14 @@ public class MainFragment extends Fragment implements TripListAdapter.ListTripLi
         super.onResume();
         tripDao.getTrips();
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentMainBinding.inflate(inflater, container, false);
         tripDao = new TripDatabaseAssessObject(getContext());
-
-
-
         RecyclerView rv  = binding.recyclerView;
         // fixed size for each row
         rv.setHasFixedSize(true);
-
         // deco a line in each row
         searchView = binding.searchView;
         searchView.clearFocus();
@@ -75,17 +64,24 @@ public class MainFragment extends Fragment implements TripListAdapter.ListTripLi
                 getContext(),
                 (new LinearLayoutManager(getContext()).getOrientation())
         ));
-
         tripDao.tripList.observe(
             getViewLifecycleOwner(),
                 tripList -> {
+
                     adapter = new TripListAdapter(tripList, this);
                     binding.recyclerView.setAdapter(adapter);
+
+                    if (tripList.size() == 0){
+                        binding.nothing.setVisibility(View.VISIBLE);
+                        rv.setVisibility(View.GONE);
+                    }
+                    else{
+                        binding.nothing.setVisibility(View.GONE);
+                        rv.setVisibility(View.VISIBLE);
+                    }
                     binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                 }
         );
-
-
         binding.add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,10 +92,17 @@ public class MainFragment extends Fragment implements TripListAdapter.ListTripLi
                 bundle.putSerializable("date",Calendar.getInstance().getTime());
                 bundle.putInt("risk", 0);
                 bundle.putString("description"," ");
+                bundle.putString("transportation", "");
+                bundle.putInt("participant", 0);
                 Navigation.findNavController(getView()).navigate(R.id.editorFragment, bundle);
             }
         });
-
+        binding.translate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(getView()).navigate(R.id.translatorFragment);
+            }
+        });
 
         // Inflate the layout for this fragment
         return binding.getRoot();
@@ -117,7 +120,8 @@ public class MainFragment extends Fragment implements TripListAdapter.ListTripLi
             bundle.putSerializable("date",trip.getDate());
             bundle.putInt("risk",trip.isRisk());
             bundle.putString("description",trip.getDescription());
-            System.out.println("Has trip with index: " + trip.getId());
+            bundle.putString("transportation", trip.getTransportation());
+            bundle.putInt("participant", trip.getParticipant());
             Navigation.findNavController(getView()).navigate(R.id.editorFragment,bundle);
         }
     }
@@ -131,7 +135,6 @@ public class MainFragment extends Fragment implements TripListAdapter.ListTripLi
         alertDialogBuilder.setIcon(R.drawable.ic_baseline_delete_24);
         // Setting Alert Dialog Message
         alertDialogBuilder.setMessage("Are you sure to delete this trip ?");
-
         alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface arg0, int arg1) {

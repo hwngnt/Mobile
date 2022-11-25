@@ -1,11 +1,8 @@
 package com.example.mobile.sqlite;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
-import androidx.annotation.Nullable;
 
 public class dbHandler extends SQLiteOpenHelper {
 
@@ -23,7 +20,7 @@ public class dbHandler extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(sqlCreateExpenseTable);
 
         String sqlCreateTripTable = "CREATE TABLE  trip(Id INTEGER PRIMARY KEY AUTOINCREMENT, name text not null, " +
-                " destination text not null , date text not null, risk boolean not null, description text)";
+                " destination text not null , date text not null, risk boolean not null, description text, transportation text not null, participant int not null)";
         sqLiteDatabase.execSQL(sqlCreateTripTable);
     }
 

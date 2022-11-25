@@ -10,8 +10,6 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -22,7 +20,6 @@ import com.example.mobile.sqlite.ExpenseDatabaseAssessObject;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
 public class addExpenseFragment extends Fragment{
     FragmentAddExpenseBinding binding;
     String[] types = new String[] {"Food","Travel"};
@@ -35,16 +32,24 @@ public class addExpenseFragment extends Fragment{
     ArrayAdapter<String> adapterExpenseType;
     Calendar calendar = Calendar.getInstance();
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss aaa");
+    Date date;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentAddExpenseBinding.inflate(inflater,container,false);
 
-        String typeExpense = getArguments().getString("types");
+        String typeExpense = getArguments().getString("type");
         tripId = getArguments().getInt("tripId");
         expenseId = getArguments().getInt("expenseId");
+        float amount = getArguments().getFloat("amount");
+        String comment = getArguments().getString("comment");
         expenseDao = new ExpenseDatabaseAssessObject(getContext(),tripId);
         Bundle bundle = savedInstanceState != null ? savedInstanceState : getArguments();
-        Date date = (Date) bundle.getSerializable("date");
+        date = (Date) bundle.getSerializable("date");
+        System.out.println("DATE !!!!!========!!!!"+date);
+        calendar.setTime(date);
+        System.out.println("DAY============" + calendar.get(Calendar.DAY_OF_MONTH));
+        System.out.println("MONTH============" + calendar.get(Calendar.MONTH));
+        System.out.println("YEAR============" + calendar.get(Calendar.YEAR)) ;
         time = binding.time;
         time.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -54,21 +59,30 @@ public class addExpenseFragment extends Fragment{
         });
         autoCompleteType = binding.typeExpense;
         adapterExpenseType = new ArrayAdapter<>(requireContext(), R.layout.dropdown_item, types);
-
         expenseDao.expense.observe(
                 getViewLifecycleOwner(),
                 expense ->{
                     autoCompleteType.setText(typeExpense);
                     autoCompleteType.setAdapter( adapterExpenseType);
-                    binding.addAmount.setText(binding.addAmount.getText().toString());
-                    binding.comments.setText(binding.comments.getText().toString());
+                    binding.addAmount.setText(String.valueOf(amount));
+                    binding.comments.setText(comment);
+                    binding.time.setText(simpleDateFormat.format(date));
                 }
         );
+        System.out.println("TRIP ID" + tripId);
+        System.out.println("EXPENSE ID" + expenseId);
         expenseDao.getExpenseByID(String.valueOf(expenseId));
         binding.addExpense.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 saveAndReturn();
+            }
+        });
+
+        binding.back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    Navigation.findNavController(getView()).navigateUp();
             }
         });
 
@@ -82,8 +96,10 @@ public class addExpenseFragment extends Fragment{
             public void onTimeSet(TimePicker timePicker, int hour, int minute) {
                 calendar.set(Calendar.HOUR_OF_DAY, hour);
                 calendar.set(Calendar.MINUTE, minute);
+                calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH));
+                calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH));
+                calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR));
                 binding.time.setText(simpleDateFormat.format(calendar.getTime()));
-
             }
         };
 

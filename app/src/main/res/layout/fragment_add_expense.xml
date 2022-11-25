@@ -75,6 +75,7 @@
         android:id="@+id/addAmount"
         android:layout_width="275dp"
         android:layout_height="80dp"
+        android:background="@drawable/bg_white_corner_10_gray"
         android:inputType="number"
         android:textColor="@color/black"
         android:translationX="70dp"
@@ -119,6 +120,7 @@
         android:id="@+id/time"
         android:layout_width="275dp"
         android:layout_height="50dp"
+        android:background="@drawable/bg_white_corner_10_gray"
         android:textColor="@color/black"
         android:translationX="70dp"
         android:translationY="430dp" />
@@ -130,6 +132,7 @@
         android:layout_height="50dp"
         android:translationX="70dp"
         android:translationY="530dp"
+        android:background="@drawable/bg_white_corner_10_gray"
         android:textColor="@color/black"/>
 
     <ImageView
@@ -148,6 +151,7 @@
         android:text="Add Expense"
         android:textColor="@color/cardview_dark_background"
         android:textSize="13dp"
+        android:translationX="20dp"
         android:translationY="675dp"
         android:textStyle="bold" />
 

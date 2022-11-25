@@ -22,6 +22,7 @@
         android:orientation="vertical">
         
         <TextView
+            android:id="@+id/nameTrip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Name"
@@ -31,6 +32,7 @@
             android:textColor="@color/black"></TextView>
 
         <TextView
+            android:id="@+id/destinationTrip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Destination"
@@ -40,6 +42,27 @@
             android:textColor="@color/black"></TextView>
 
         <TextView
+            android:id="@+id/transportationTrip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Destination"
+            android:textStyle="bold"
+            android:textSize="13dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/black"></TextView>
+
+        <TextView
+            android:id="@+id/participant"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Destination"
+            android:textStyle="bold"
+            android:textSize="13dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/black"></TextView>
+
+        <TextView
+            android:id="@+id/date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Date"
@@ -49,6 +72,7 @@
             android:textColor="@color/black"></TextView>
 
         <TextView
+            android:id="@+id/risk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Risk assessment"
@@ -57,6 +81,7 @@
             android:layout_marginBottom="10dp"
             android:textColor="@color/black"></TextView>
         <TextView
+            android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Description"
@@ -70,20 +95,22 @@
             android:layout_marginTop="16dp"
             android:orientation="horizontal">
             <Button
+                android:id="@+id/btnBack"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginEnd="10dp"
                 android:textSize="14sp"
                 android:alpha="0.5"
-                android:background="@drawable/bg_gray_corner_10"
+                android:backgroundTint="@color/teal_200"
                 android:text="Back"/>
             <Button
+                android:id="@+id/btnAdd"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="14sp"
-                android:background="@drawable/bg_green_corner_10"
+                android:backgroundTint="@color/teal_700"
                 android:text="Add"/>
         </LinearLayout>
 

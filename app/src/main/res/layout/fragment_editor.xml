@@ -24,15 +24,16 @@
         android:translationX="24dp"
         android:translationY="50dp" />
 
-    <Button
-        android:id="@+id/addExpense"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:height="50dp"
-        android:text="List Expense"
-        android:translationX="260dp"
-        android:translationY="50dp" />
 
+    <ImageButton
+        android:id="@+id/addExpense"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:background="@drawable/back_arrow"
+        android:translationX="350dp"
+        android:translationY="50dp"
+        android:scaleX="-1"
+        />
 
     <TextView
         android:id="@+id/addTripTitle"
@@ -53,21 +54,23 @@
         android:translationX="28dp"
         android:translationY="113dp" />
 
+
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="275dp"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
+        android:hint="Name"
         android:translationX="70dp"
-        android:translationY="190dp"
-        >
+        android:translationY="160dp">
+
         <AutoCompleteTextView
-            android:textColor="@color/black"
             android:id="@+id/nameTrip"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/bg_white_corner_10_gray"
             android:layout_weight="1"
             android:inputType="none"
-           />
+            android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -79,20 +82,22 @@
         android:textSize="13dp"
         android:textStyle="bold"
         android:translationX="70dp"
-        android:translationY="165dp" />
+        android:translationY="145dp" />
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="275dp"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:translationX="70dp"
-        android:translationY="310dp"
+        android:translationY="250dp"
+        android:hint="Transportation"
         >
         <AutoCompleteTextView
             android:textColor="@color/black"
-            android:id="@+id/destinationTrip"
+            android:id="@+id/transportationTrip"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/bg_white_corner_10_gray"
             android:layout_weight="1"
             android:inputType="none"
             />
@@ -102,12 +107,54 @@
         android:id="@+id/tripDestination"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Transportation"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="13dp"
+        android:textStyle="bold"
+        android:translationX="70dp"
+        android:translationY="230dp" />
+
+    <TextView
+        android:id="@+id/tripTransport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Destination"
         android:textColor="@color/cardview_dark_background"
         android:textSize="13dp"
         android:textStyle="bold"
         android:translationX="70dp"
-        android:translationY="290dp" />
+        android:translationY="320dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Participant"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="13dp"
+        android:textStyle="bold"
+        android:translationX="220dp"
+        android:translationY="320dp" />
+
+    <EditText
+        android:id="@+id/destinationTrip"
+        android:layout_width="136dp"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_white_corner_10_gray"
+        android:hint="  Destination"
+        android:textColor="@color/black"
+        android:translationX="70dp"
+        android:translationY="340dp" />
+
+    <EditText
+        android:id="@+id/participant"
+        android:layout_width="125dp"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_white_corner_10_gray"
+        android:hint="  Participant"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:translationX="220dp"
+        android:translationY="340dp" />
 
     <TextView
         android:id="@+id/tripDate"
@@ -136,7 +183,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Description"
-        android:textColor="@color/black"
+        android:textColor="@color/cardview_dark_background"
         android:textSize="13dp"
         android:textStyle="bold"
         android:translationX="70dp"
@@ -147,10 +194,10 @@
         android:layout_width="275dp"
         android:layout_height="50dp"
         android:background="@drawable/bg_white_corner_10_gray"
+        android:hint="  Date"
         android:textColor="@color/black"
         android:translationX="70dp"
-        android:translationY="430dp"
-        android:hint="  Date"/>
+        android:translationY="430dp" />
 
 
     <RadioGroup
@@ -166,16 +213,16 @@
             android:id="@+id/radioButtonYes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="Yes" />
+            android:text="Yes"
+            android:textColor="@color/black" />
 
         <RadioButton
             android:id="@+id/radioButtonNo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
-            android:textColor="@color/black"
-            android:text="No" />
+            android:text="No"
+            android:textColor="@color/black" />
     </RadioGroup>
 
 
@@ -184,10 +231,10 @@
         android:layout_width="275dp"
         android:layout_height="50dp"
         android:background="@drawable/bg_white_corner_10_gray"
+        android:hint="  Description"
         android:textColor="@color/black"
         android:translationX="70dp"
-        android:translationY="590dp"
-        android:hint="  Description"/>
+        android:translationY="590dp" />
 
     <ImageView
         android:id="@+id/add_icon"
@@ -204,6 +251,7 @@
         android:layout_centerHorizontal="true"
         android:text="Add Trip"
         android:textColor="@color/cardview_dark_background"
+        android:layout_marginLeft="20dp"
         android:textSize="13dp"
         android:translationY="675dp"
         android:textStyle="bold" />

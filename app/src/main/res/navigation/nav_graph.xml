@@ -24,4 +24,9 @@
         android:name="com.example.mobile.ExpenseFragment"
         android:label="fragment_expense"
         tools:layout="@layout/fragment_expense" />
+    <fragment
+        android:id="@+id/translatorFragment"
+        android:name="com.example.mobile.TranslatorFragment"
+        android:label="fragment_translator"
+        tools:layout="@layout/fragment_translator" />
 </navigation>

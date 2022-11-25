@@ -47,6 +47,8 @@ public class TripDatabaseAssessObject {
             trip.setId(cursor.getInt(cursor.getColumnIndexOrThrow("Id")));
             trip.setName(cursor.getString(cursor.getColumnIndexOrThrow("name")));
             trip.setDestination(cursor.getString(cursor.getColumnIndexOrThrow("destination")));
+            trip.setTransportation(cursor.getString(cursor.getColumnIndexOrThrow("transportation")));
+            trip.setParticipant(cursor.getInt(cursor.getColumnIndexOrThrow("participant")));
             Date date = sdf.parse(cursor.getString(cursor.getColumnIndexOrThrow("date")), new ParsePosition(0));
             trip.setDate(date);
             trip.setRisk(cursor.getInt(cursor.getColumnIndexOrThrow("risk")));
@@ -85,7 +87,8 @@ public class TripDatabaseAssessObject {
         values.put("date", sdf.format(trip.getDate()));
         values.put("risk", trip.isRisk());
         values.put("description", trip.getDescription());
-
+        values.put("transportation", trip.getTransportation());
+        values.put("participant", trip.getParticipant());
         return db.insert("trip", null, values);
     }
 
@@ -96,7 +99,8 @@ public class TripDatabaseAssessObject {
         values.put("date", sdf.format(trip.getDate()));
         values.put("risk", trip.isRisk());
         values.put("description", trip.getDescription());
-
+        values.put("transportation", trip.getTransportation());
+        values.put("participant", trip.getParticipant());
         return db.update("trip", values, "id=?", new String[]{String.valueOf(trip.getId())});
     }
 
